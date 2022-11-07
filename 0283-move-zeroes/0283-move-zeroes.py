@@ -4,11 +4,8 @@ class Solution:
         Do not return anything, modify nums in-place instead.
         """
         l = 0
-        r = len(nums) - 1
-        while l < r:
-            if nums[l] == 0:
-                nums.append(nums.pop(l))
-                r-=1
-            else:
+        for r in range(len(nums)):
+            if nums[r]:
+                nums[l], nums[r] = nums[r], nums[l]
                 l+=1
         return nums
