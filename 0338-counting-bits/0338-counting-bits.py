@@ -1,13 +1,10 @@
 class Solution:
     def countBits(self, n: int) -> List[int]:
-        arr = []
-        res = [0]
-        def getSum(n):
-            sum = 0
-            for digit in str(n): 
-              sum += int(digit)      
-            return sum
+        dp = [0] * (n+1)
+        offset = 1
         for i in range(1, n+1):
-            binary = bin(i).replace("0b", "")
-            res.append(getSum(binary))
-        return res
+            if offset * 2 == i:
+                offset = i
+            dp[i] = 1 + dp[i - offset]
+        
+        return dp
