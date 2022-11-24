@@ -9,7 +9,9 @@ class Solution:
                 l = mid + 1
             else:
                 r = mid - 1
-        if nums[l] < target:
-            return l+1
-        else:
-            return l
+        i = 0
+        if target > nums[len(nums)-1]:
+            return len(nums)
+        while nums[i]< target:
+            i+=1
+        return i
